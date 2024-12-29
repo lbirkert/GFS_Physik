@@ -20,10 +20,6 @@ jobs:
         environment-file: environment.yml
         python-version: "3.9"
 
-    - name: Install Jupyter and nbconvert
-      run: |
-        conda install -y jupyter nbconvert
-
     - name: Convert Jupyter Notebook to Presentation
       run: |
         jupyter nbconvert --to slides --output-dir=slides GFS_Physik.ipynb
