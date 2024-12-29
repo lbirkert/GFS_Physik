@@ -11,33 +11,36 @@ jobs:
       pages: write
       id-token: write
 
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.9"
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
 
-    - name: Install Required Python Packages
-      run: |
-        python -m pip install --upgrade pip
-        pip install jupyter nbconvert
+      - name: Install Required Python Packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install jupyter nbconvert
 
-    - name: Convert Jupyter Notebook to Presentation
-      run: |
-        jupyter nbconvert --to slides --output-dir=slides GFS_Physik.ipynb
-        tree slides
+      - name: Convert Jupyter Notebook to Presentation
+        run: |
+          jupyter nbconvert --to slides --output-dir=slides GFS_Physik.ipynb
+          tree slides
+      
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3.0.0
+        with:
+          path: slides/
 
-    - name: Upload artifact for GitHub Pages
-      uses: actions/upload-artifact@v4
-      with:
-        name: github-pages
-        path: slides
-
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+      - name: Deploy GitHub Pages site
+        uses: actions/deploy-pages@v4.0.3
