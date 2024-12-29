@@ -1,0 +1,38 @@
+name: Deploy Jupyter Notebook Presentation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-presentation:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Miniconda
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        activate-environment: gfs_coulomb_gesetz
+        environment-file: environment.yml
+        python-version: "3.9"
+
+    - name: Install Jupyter and nbconvert
+      run: |
+        conda install -y jupyter nbconvert
+
+    - name: Convert Jupyter Notebook to Presentation
+      run: |
+        jupyter nbconvert --to slides --output-dir=slides GFS_Physik.ipynb
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: slides
+
+    - name: Confirm Deployment
+      run: echo "Presentation deployed to GitHub Pages."

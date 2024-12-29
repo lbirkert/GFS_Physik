@@ -13,7 +13,7 @@ Benutzt wurde hier nach Wunsch der Lehrkraft ausschließlich Python. Das Ganze w
 1. Neues conda-environment erstellen:
 
 ```sh
-conda create --name gfs_coulomb_gesetz --file requirements.txt
+conda env create --name gfs_coulomb_gesetz --file environment.txt
 conda activate gfs_coulomb_gesetz
 ```
 
