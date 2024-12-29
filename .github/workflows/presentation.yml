@@ -30,6 +30,7 @@ jobs:
     - name: Convert Jupyter Notebook to Presentation
       run: |
         jupyter nbconvert --to slides --output-dir=slides GFS_Physik.ipynb
+        tree slides
 
     - name: Upload artifact for GitHub Pages
       uses: actions/upload-artifact@v4
