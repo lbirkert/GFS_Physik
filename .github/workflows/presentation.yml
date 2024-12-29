@@ -31,8 +31,11 @@ jobs:
       run: |
         jupyter nbconvert --to slides --output-dir=slides GFS_Physik.ipynb
 
+    - name: Upload artifact for GitHub Pages
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: slides
+
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
-      with:
-        path: slides
