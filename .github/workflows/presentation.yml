@@ -6,7 +6,11 @@ on:
       - main
 
 jobs:
-  deploy-presentation:
+  deploy:
+    permissions:
+      pages: write
+      id-token: write
+
     runs-on: ubuntu-latest
 
     steps:
@@ -28,10 +32,7 @@ jobs:
         jupyter nbconvert --to slides --output-dir=slides GFS_Physik.ipynb
 
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
+      id: deployment
+      uses: actions/deploy-pages@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: slides
-
-    - name: Confirm Deployment
-      run: echo "Presentation deployed to GitHub Pages."
+        path: slides
