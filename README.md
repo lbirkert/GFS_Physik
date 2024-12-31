@@ -2,6 +2,10 @@
 
 ## Kann ich Herr Wein's Anforderungen standhalten?
 
+*Anmerkung zur Leitfrage*
+
+Die Leitfrage ist gewählt worden, da mir sonst keine andere zu Kopf kam. Sie soll nichts implizieren, sondern einen humorvollen Einstieg in die GFS bieten. Stellvertretend für den Schüler beantwortet der Lehrer hierbei diese Leitfrage indem er Feedback zur GFS gibt.
+
 ## 1. *Was ist dieses Projekt?*
 
 Dieses Projekt haust die Präsentation und Simulation einer GFS im Fach Physik, die ich in der 11. Klasse halten werde (oder bereits gehalten habe) am 15.01.2024. Das Thema ist das Coulomb-Gesetz. Hierfür wurde eine Simulation einer beweglichen Probeladung im Feld zweier ortsfesten felderzeugenden Ladungen programmiert.
